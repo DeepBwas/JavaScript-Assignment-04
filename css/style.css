@@ -1,0 +1,14 @@
+/* JavaScript Assignment - 4 | Deep Biswas - 200554124 */
+/* Adding fonts */
+@font-face {
+    font-family: "SF-Pro";
+    src: url(../fonts/SF-Pro.otf);
+}
+/* Global Styles */
+html{
+    scroll-behavior: smooth;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
