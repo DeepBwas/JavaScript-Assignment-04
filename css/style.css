@@ -12,3 +12,43 @@ body{
     padding: 0;
     margin: 0;
 }
+/* Header Styles */
+header{
+    background-color: #0e0e0e;
+    color: #fff;
+    padding: 2rem 10rem;
+}
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-container a img{
+    width: 7em;
+    height: auto;
+}
+.search input{
+    padding: 0.5rem;
+    border: solid 1px #023f85;
+    border-radius: 5px;
+    width: 20em;
+    font-size: 1rem;
+    font-family: 'SF-Pro', sans-serif;
+}
+.search button{
+    font-size: 1.1rem;
+    padding: 0.49rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #fcee0a;
+    color: #023f85;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.search button:hover{
+    background-color: #023f85;
+    color: #fff;
+}
+.search button:active{
+    transform: scale(0.9);
+}
