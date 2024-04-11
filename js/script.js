@@ -1,4 +1,8 @@
 /* JavaScript Assignment - 4 | Deep Biswas - 200554124 */
+
+// Adding Dynamic Year
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
 const windowText = document.querySelector('.window-text');
 const searchText = document.getElementById('searchText');
 const searchBtn = document.getElementById('searchBtn');
@@ -8,6 +12,7 @@ const movieList = document.querySelector('.movies');
 const apiKey = 'e4be2d8d86fbfd83ce907eca1f0262ab'
 const baseUrl = 'https://api.themoviedb.org/3/'
 
+// Fetch Trending Movies
 function fetchTrendingMovies(){
     const url = `${baseUrl}movie/popular?language=en-US&page=1&api_key=${apiKey}`;
     console.log(url);
@@ -16,6 +21,7 @@ function fetchTrendingMovies(){
         .then(json => displayTrendingMovies(json));
 }
 
+// Display Trending Movies
 function displayTrendingMovies(json){
     const moviesArray = json.results;
     for (let i=0; i<moviesArray.length; i++){
@@ -40,6 +46,7 @@ function displayTrendingMovies(json){
     windowText.style.color = 'black';
 }
 
+// Fetch Search Results
 function fetchSearchResults(){
     let searchValue = searchText.value;
     if(searchValue === ''){
@@ -55,6 +62,7 @@ function fetchSearchResults(){
         .then(json => displaySearchResults(json));
 }
 
+// Display Search Results
 function displaySearchResults(json){
     movieList.innerHTML = '';
     const moviesArray = json.results;
@@ -86,6 +94,7 @@ function displaySearchResults(json){
     windowText.style.color = 'black';
 }
 
+// Event Listeners
 window.onload = function(){
     fetchTrendingMovies();
     displayTrendingMovies();
