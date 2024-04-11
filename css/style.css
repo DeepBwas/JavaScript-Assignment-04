@@ -54,7 +54,7 @@ header{
 }
 /* Main Styles */
 .main-container{
-    padding: 2rem 10rem;
+    padding: 0 10rem 2rem 10rem;
 }
 .main-container h2{
     text-align: center;
@@ -70,9 +70,18 @@ header{
 .main-window h2{
     text-align: left;
 }
+.movies{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
 .movie-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 15em;
-    height: 28em;
+    height: 30em;
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -99,6 +108,7 @@ header{
     margin: 0.5rem 0;
 }
 .movie-card button{
+    font-family: 'SF-Pro', sans-serif;
     font-size: 1.1rem;
     padding: 0.49rem 1rem;
     border: none;
