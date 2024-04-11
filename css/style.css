@@ -24,7 +24,7 @@ header{
     align-items: center;
 }
 .header-container a img{
-    width: 7em;
+    width: 6.5em;
     height: auto;
 }
 .search input{
@@ -62,6 +62,9 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.credentials p{
+    filter: drop-shadow(0 0 10px #ffd700);
 }
 .credentials button{
     font-size: 1.1rem;

@@ -54,6 +54,7 @@ function displayTrendingMovies(json){
             movieImg.src = 'img/no-movie-poster.png';
         }else{
             movieImg.src = `https://image.tmdb.org/t/p/w500${moviesArray[i].poster_path}`;
+            movieImg.alt = moviesArray[i].title;
         }
         let movieTitle = document.createElement('h2');
         movieCard.appendChild(movieTitle);
@@ -101,6 +102,7 @@ function displaySearchResults(json){
             movieImg.src = 'img/no-movie-poster.png';
         }else{
             movieImg.src = `https://image.tmdb.org/t/p/w500${moviesArray[i].poster_path}`;
+            movieImg.alt = moviesArray[i].title;
         }
         let movieTitle = document.createElement('h2');
         movieCard.appendChild(movieTitle);
