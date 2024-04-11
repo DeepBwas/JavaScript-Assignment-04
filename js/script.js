@@ -24,7 +24,11 @@ function displayTrendingMovies(json){
         movieCard.classList.add('movie-card');
         let movieImg = document.createElement('img');
         movieCard.appendChild(movieImg);
-        movieImg.src = `https://image.tmdb.org/t/p/w500${moviesArray[i].poster_path}`;
+        if (moviesArray[i].poster_path === null){
+            movieImg.src = 'img/no-movie-poster.png';
+        }else{
+            movieImg.src = `https://image.tmdb.org/t/p/w500${moviesArray[i].poster_path}`;
+        }
         let movieTitle = document.createElement('h2');
         movieCard.appendChild(movieTitle);
         movieTitle.textContent = moviesArray[i].title;
@@ -56,6 +60,7 @@ function displaySearchResults(json){
     const moviesArray = json.results;
     if (moviesArray.length === 0){
         windowText.textContent = 'No results found!';
+        windowText.style.color = 'red';
         return;
     }
     for (let i=0; i<moviesArray.length; i++){
@@ -64,7 +69,11 @@ function displaySearchResults(json){
         movieCard.classList.add('movie-card');
         let movieImg = document.createElement('img');
         movieCard.appendChild(movieImg);
-        movieImg.src = `https://image.tmdb.org/t/p/w500${moviesArray[i].poster_path}`;
+        if (moviesArray[i].poster_path === null){
+            movieImg.src = 'img/no-movie-poster.png';
+        }else{
+            movieImg.src = `https://image.tmdb.org/t/p/w500${moviesArray[i].poster_path}`;
+        }
         let movieTitle = document.createElement('h2');
         movieCard.appendChild(movieTitle);
         movieTitle.textContent = moviesArray[i].title;
