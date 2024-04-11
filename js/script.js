@@ -81,7 +81,8 @@ function displaySearchResults(json){
         movieCard.appendChild(viewDetailsBtn);
         viewDetailsBtn.textContent = 'View Details';
     }
-    windowText.textContent = 'Search results...';
+    let showSearch = searchText.value;
+    windowText.textContent = `Search results for '${showSearch}'...`;
     windowText.style.color = 'black';
 }
 
