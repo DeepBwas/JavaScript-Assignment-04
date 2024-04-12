@@ -3,6 +3,7 @@
 // Adding Dynamic Year
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+// Global Variables
 const windowText = document.querySelector('.window-text');
 const searchText = document.getElementById('searchText');
 const searchBtn = document.getElementById('searchBtn');
@@ -13,7 +14,6 @@ const movieList = document.querySelector('.movies');
 // Credentials Handler JS 
 const showCredentials = document.getElementById('showCr');
 const dynamicCrdits = document.querySelector('.dynamicCrs');
-
 showCredentials.addEventListener('click', function(){
     if (showCredentials.textContent === 'Show Credentials') {
         dynamicCrdits.textContent = 'Deep Biswas - 200554124';
@@ -51,7 +51,6 @@ function displayTrendingMovies(json){
     movieList.style.gridGap = '1.2rem';
     movieList.style.marginTop = '1rem';
     mainWindow.style.padding = '2rem';
-
     const moviesArray = json.results;
     for (let i=0; i<moviesArray.length; i++){
         let movieCard = document.createElement('div');
@@ -107,7 +106,6 @@ function displaySearchResults(json){
     movieList.style.gridGap = '1.2rem';
     movieList.style.marginTop = '1rem';
     mainWindow.style.padding = '2rem';
-
     const moviesArray = json.results;
     if (moviesArray.length === 0){
         windowText.textContent = 'No results found!';
@@ -168,14 +166,11 @@ function displayMovieDetails(json){
     movieList.style.margin = '0';
     movieList.style.paddingRight = '2rem';
     mainWindow.style.padding = '3rem';
-
     windowText.textContent = `Details for ${json.title}...`;
-
     let movieCard = document.createElement('div');
     movieList.appendChild(movieCard);
     movieCard.classList.add('single-movie-card');
     movieCard.style.display = 'flex';
-
     let movieImg = document.createElement('img');
     movieCard.appendChild(movieImg);
     if (json.poster_path === null){
@@ -184,25 +179,19 @@ function displayMovieDetails(json){
         movieImg.src = `https://image.tmdb.org/t/p/w500${json.poster_path}`;
         movieImg.alt = json.title;
     }
-
     let textContainer = document.createElement('div');
     movieCard.appendChild(textContainer);
     textContainer.style.marginLeft = '1.5rem';
-
     let movieTitle = document.createElement('h2');
     textContainer.appendChild(movieTitle);
     movieTitle.textContent = json.title;
-
-
     let movieOverview = document.createElement('p');
     textContainer.appendChild(movieOverview);
     movieOverview.style.width = '60%';
     movieOverview.textContent = json.overview;
-
     let movieReleaseDate = document.createElement('p');
     textContainer.appendChild(movieReleaseDate);
     movieReleaseDate.textContent = `Release Date: ${json.release_date}`;
-
     let movieRating = document.createElement('p');
     textContainer.appendChild(movieRating);
     let formattedRating = json.vote_average.toFixed(1);
@@ -213,13 +202,11 @@ function displayMovieDetails(json){
         movieRating.style.color = 'green';
     }
     movieRating.textContent += '/10';
-
     let movieRuntime = document.createElement('p');
     textContainer.appendChild(movieRuntime);
     let hours = Math.floor(json.runtime / 60);
     let minutes = json.runtime % 60;
     movieRuntime.textContent = `Runtime: ${hours} hours ${minutes} minutes`;
-
     let movieGenres = document.createElement('p');
     textContainer.appendChild(movieGenres);
     movieGenres.textContent = 'Genre(s): ';
@@ -229,7 +216,6 @@ function displayMovieDetails(json){
             movieGenres.textContent += ', ';
         }
     }
-
     let backBtn = document.createElement('button');
     textContainer.appendChild(backBtn);
     backBtn.textContent = 'Back';
@@ -248,5 +234,4 @@ window.onload = function(){
     fetchTrendingMovies();
     displayTrendingMovies();
 }
-
 searchBtn.addEventListener('click', fetchSearchResults);
