@@ -6,6 +6,7 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
 const windowText = document.querySelector('.window-text');
 const searchText = document.getElementById('searchText');
 const searchBtn = document.getElementById('searchBtn');
+const mainWindow = document.querySelector('.main-window');
 const movieList = document.querySelector('.movies');
 
 
@@ -43,6 +44,14 @@ function fetchTrendingMovies(){
 
 // Display Trending Movies
 function displayTrendingMovies(json){
+    movieList.innerHTML = '';
+    movieList.style = '';
+    movieList.style.display = 'grid';
+    movieList.style.gridTemplateColumns = 'repeat(auto-fill, minmax(15em, 1fr))';
+    movieList.style.gridGap = '1.2rem';
+    movieList.style.marginTop = '1rem';
+    mainWindow.style.padding = '2rem';
+
     const moviesArray = json.results;
     for (let i=0; i<moviesArray.length; i++){
         let movieCard = document.createElement('div');
@@ -62,6 +71,12 @@ function displayTrendingMovies(json){
         let viewDetailsBtn = document.createElement('button');
         movieCard.appendChild(viewDetailsBtn);
         viewDetailsBtn.textContent = 'View Details';
+
+        viewDetailsBtn.id = `movie-${moviesArray[i].id}`;
+
+        viewDetailsBtn.addEventListener('click', function(){
+            fetchMovieDetails(moviesArray[i].id);
+        });
     }
     windowText.textContent = 'Trending movies...';
     windowText.style.color = 'black';
@@ -86,6 +101,13 @@ function fetchSearchResults(){
 // Display Search Results
 function displaySearchResults(json){
     movieList.innerHTML = '';
+    movieList.style = '';
+    movieList.style.display = 'grid';
+    movieList.style.gridTemplateColumns = 'repeat(auto-fill, minmax(15em, 1fr))';
+    movieList.style.gridGap = '1.2rem';
+    movieList.style.marginTop = '1rem';
+    mainWindow.style.padding = '2rem';
+
     const moviesArray = json.results;
     if (moviesArray.length === 0){
         windowText.textContent = 'No results found!';
@@ -110,10 +132,115 @@ function displaySearchResults(json){
         let viewDetailsBtn = document.createElement('button');
         movieCard.appendChild(viewDetailsBtn);
         viewDetailsBtn.textContent = 'View Details';
+
+        viewDetailsBtn.id = `movie-${moviesArray[i].id}`;
+
+        viewDetailsBtn.addEventListener('click', function(){
+            fetchMovieDetails(moviesArray[i].id);
+        });
     }
     let showSearch = searchText.value;
     windowText.textContent = `Search results for '${showSearch}'...`;
     windowText.style.color = 'black';
+}
+
+// Function to fetch Movie Details
+function fetchMovieDetails(movieId){
+    const url = `${baseUrl}movie/${movieId}?api_key=${apiKey}`;
+    console.log(url);
+    fetch(url)
+        .then(response => response.json())
+        .then(json => displayMovieDetails(json));
+}
+
+// Function to display Movie Details
+function displayMovieDetails(json){
+    movieList.innerHTML = '';
+    movieList.style = '';
+    movieList.style.display = 'block';
+    movieList.style.backgroundColor = '#f5f5f5';
+    movieList.style.height = 'fit-content';
+    movieList.style.border = '1px solid #cccccc';
+    movieList.style.borderRadius = '8px';
+    movieList.style.margin = '1rem';
+    movieList.style.padding = '10px';
+    movieList.style.padding = '0';
+    movieList.style.margin = '0';
+    movieList.style.paddingRight = '2rem';
+    mainWindow.style.padding = '3rem';
+
+    windowText.textContent = `Details for ${json.title}...`;
+
+    let movieCard = document.createElement('div');
+    movieList.appendChild(movieCard);
+    movieCard.classList.add('single-movie-card');
+    movieCard.style.display = 'flex';
+
+    let movieImg = document.createElement('img');
+    movieCard.appendChild(movieImg);
+    if (json.poster_path === null){
+        movieImg.src = 'img/no-movie-poster.png';
+    }else{
+        movieImg.src = `https://image.tmdb.org/t/p/w500${json.poster_path}`;
+        movieImg.alt = json.title;
+    }
+
+    let textContainer = document.createElement('div');
+    movieCard.appendChild(textContainer);
+    textContainer.style.marginLeft = '1.5rem';
+
+    let movieTitle = document.createElement('h2');
+    textContainer.appendChild(movieTitle);
+    movieTitle.textContent = json.title;
+
+
+    let movieOverview = document.createElement('p');
+    textContainer.appendChild(movieOverview);
+    movieOverview.style.width = '60%';
+    movieOverview.textContent = json.overview;
+
+    let movieReleaseDate = document.createElement('p');
+    textContainer.appendChild(movieReleaseDate);
+    movieReleaseDate.textContent = `Release Date: ${json.release_date}`;
+
+    let movieRating = document.createElement('p');
+    textContainer.appendChild(movieRating);
+    let formattedRating = json.vote_average.toFixed(1);
+    movieRating.textContent = `Rating: ${formattedRating}`;
+    if (json.vote_average < 5){
+        movieRating.style.color = 'red';
+    }else{
+        movieRating.style.color = 'green';
+    }
+    movieRating.textContent += '/10';
+
+    let movieRuntime = document.createElement('p');
+    textContainer.appendChild(movieRuntime);
+    let hours = Math.floor(json.runtime / 60);
+    let minutes = json.runtime % 60;
+    movieRuntime.textContent = `Runtime: ${hours} hours ${minutes} minutes`;
+
+    let movieGenres = document.createElement('p');
+    textContainer.appendChild(movieGenres);
+    movieGenres.textContent = 'Genre(s): ';
+    for (let i=0; i<json.genres.length; i++){
+        movieGenres.textContent += `${json.genres[i].name}`;
+        if (i !== json.genres.length - 1){
+            movieGenres.textContent += ', ';
+        }
+    }
+
+    let backBtn = document.createElement('button');
+    textContainer.appendChild(backBtn);
+    backBtn.textContent = 'Back';
+    backBtn.addEventListener('click', function(){
+        if (searchText.value !== ''){
+            fetchSearchResults();
+        }
+        else{
+            fetchTrendingMovies();
+        }
+    });
 }
 
 // Event Listeners
