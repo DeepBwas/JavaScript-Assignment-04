@@ -261,6 +261,9 @@ footer{
     padding: 0.3vw;
     border: 1px #0e0e0e dashed;
 }
+.pwr-text span{
+    font-size: 1.2rem;
+}
 #tmdbCredit{
     max-width: 200px;
     cursor: pointer;
