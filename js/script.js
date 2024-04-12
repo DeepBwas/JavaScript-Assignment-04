@@ -47,6 +47,10 @@ function fetchTrendingMovies(){
 
 // Display Trending Movies
 function displayTrendingMovies(json){
+    if (!json || !json.results) {
+        console.error('Invalid data:', json);
+        return;
+    }
     movieList.innerHTML = '';
     movieList.style = '';
     movieList.style.display = 'grid';
