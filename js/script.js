@@ -47,7 +47,10 @@ function fetchTrendingMovies(){
 
 // Display Trending Movies
 function displayTrendingMovies(json){
-    if (!json || !json.results) {
+    if (!json) {
+        return;
+    }
+    if (!json.results) {
         console.error('Invalid data:', json);
         return;
     }
@@ -77,9 +80,7 @@ function displayTrendingMovies(json){
         let viewDetailsBtn = document.createElement('button');
         movieCard.appendChild(viewDetailsBtn);
         viewDetailsBtn.textContent = 'View Details';
-
         viewDetailsBtn.id = `movie-${moviesArray[i].id}`;
-
         viewDetailsBtn.addEventListener('click', function(){
             fetchMovieDetails(moviesArray[i].id);
         });
