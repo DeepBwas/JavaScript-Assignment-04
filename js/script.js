@@ -1,5 +1,4 @@
 /* JavaScript Assignment - 4 | Deep Biswas - 200554124 */
-
 // Adding Dynamic Year
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -14,6 +13,7 @@ const tmdbCredit = document.getElementById('tmdbCredit');
 // Credentials Handler JS 
 const showCredentials = document.getElementById('showCr');
 const dynamicCrdits = document.querySelector('.dynamicCrs');
+
 showCredentials.addEventListener('click', function(){
     if (showCredentials.textContent === 'Show Credentials') {
         dynamicCrdits.textContent = 'Deep Biswas - 200554124';
@@ -29,8 +29,8 @@ showCredentials.addEventListener('click', function(){
 // Credentials Handler JS TO BE removed after graded and while expanding the project
 
 // API Credentials
-const apiKey = 'e4be2d8d86fbfd83ce907eca1f0262ab'
-const baseUrl = 'https://api.themoviedb.org/3/'
+const apiKey = 'e4be2d8d86fbfd83ce907eca1f0262ab';
+const baseUrl = 'https://api.themoviedb.org/3/';
 
 tmdbCredit.addEventListener('click', function(){
     window.open('https://www.themoviedb.org/', '_blank');
@@ -39,7 +39,6 @@ tmdbCredit.addEventListener('click', function(){
 // Fetch Trending Movies
 function fetchTrendingMovies(){
     const url = `${baseUrl}movie/popular?language=en-US&page=1&api_key=${apiKey}`;
-    console.log(url);
     fetch(url)
         .then(response => response.json())
         .then(json => displayTrendingMovies(json));
@@ -153,7 +152,6 @@ function displaySearchResults(json){
 // Function to fetch Movie Details
 function fetchMovieDetails(movieId){
     const url = `${baseUrl}movie/${movieId}?api_key=${apiKey}`;
-    console.log(url);
     fetch(url)
         .then(response => response.json())
         .then(json => displayMovieDetails(json));
@@ -199,7 +197,10 @@ function displayMovieDetails(json){
     movieOverview.textContent = json.overview;
     let movieReleaseDate = document.createElement('p');
     textContainer.appendChild(movieReleaseDate);
-    movieReleaseDate.textContent = `Release Date: ${json.release_date}`;
+    let [year, month, day] = json.release_date.split('-');
+    let releaseDate = new Date(year, month - 1, day);
+    let formattedDate = releaseDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    movieReleaseDate.textContent = `Release Date: ${formattedDate}`;
     let movieRating = document.createElement('p');
     textContainer.appendChild(movieRating);
     let formattedRating = json.vote_average.toFixed(1);
