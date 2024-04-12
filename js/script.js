@@ -10,7 +10,6 @@ const searchBtn = document.getElementById('searchBtn');
 const mainWindow = document.querySelector('.main-window');
 const movieList = document.querySelector('.movies');
 
-
 // Credentials Handler JS 
 const showCredentials = document.getElementById('showCr');
 const dynamicCrdits = document.querySelector('.dynamicCrs');
@@ -27,7 +26,6 @@ showCredentials.addEventListener('click', function(){
     }
 });
 // Credentials Handler JS TO BE removed after graded and while expanding the project
-
 
 // API Credentials
 const apiKey = 'e4be2d8d86fbfd83ce907eca1f0262ab'
