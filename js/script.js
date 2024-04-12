@@ -9,6 +9,7 @@ const searchText = document.getElementById('searchText');
 const searchBtn = document.getElementById('searchBtn');
 const mainWindow = document.querySelector('.main-window');
 const movieList = document.querySelector('.movies');
+const tmdbCredit = document.getElementById('tmdbCredit');
 
 // Credentials Handler JS 
 const showCredentials = document.getElementById('showCr');
@@ -30,6 +31,10 @@ showCredentials.addEventListener('click', function(){
 // API Credentials
 const apiKey = 'e4be2d8d86fbfd83ce907eca1f0262ab'
 const baseUrl = 'https://api.themoviedb.org/3/'
+
+tmdbCredit.addEventListener('click', function(){
+    window.open('https://www.themoviedb.org/', '_blank');
+});
 
 // Fetch Trending Movies
 function fetchTrendingMovies(){
