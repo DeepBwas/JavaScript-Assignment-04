@@ -33,7 +33,7 @@ const apiKey = 'e4be2d8d86fbfd83ce907eca1f0262ab';
 const baseUrl = 'https://api.themoviedb.org/3/';
 
 tmdbCredit.addEventListener('click', function(){
-    window.open('https://www.themoviedb.org/', '_blank');
+    window.open('https://developer.themoviedb.org/reference/intro/getting-started', '_blank');
 });
 
 // Fetch Trending Movies
