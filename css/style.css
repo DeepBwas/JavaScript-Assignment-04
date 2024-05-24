@@ -1,4 +1,5 @@
 /* JavaScript Assignment - 4 | Deep Biswas - 200554124 */
+/* Making this responsive */
 /* Adding fonts */
 @font-face {
     font-family: "SF-Pro";
@@ -51,6 +52,38 @@ header{
 }
 .search button:active{
     transform: scale(0.9);
+}
+@media screen and (max-width: 768px){
+    header{
+        padding: 2rem 5rem;
+    }
+    .header-container a img{
+        width: 5em;
+    }
+    .search input{
+        width: 15em;
+    }
+}
+@media screen and (max-width: 576px){
+    header{
+        padding: 2rem 2rem;
+    }
+    .header-container a img{
+        width: 4em;
+    }
+    .search input{
+        width: 10em;
+    }
+}
+@media screen and (max-width: 480px){
+    .search input{
+        width: 8em;
+    }
+}
+@media screen and (max-width: 360px){
+    .search input{
+        width: 6em;
+    }
 }
 /* Main Styles */
 .main-container{
@@ -184,6 +217,144 @@ header{
 .single-movie-card button:active{
     transform: scale(0.9);
 }
+@media screen and (max-width: 768px){
+    .main-container{
+        padding: 0 5rem 2rem 5rem;
+    }
+    .movies{
+        grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+    }
+    .movie-card{
+        width: 12em;
+        height: 25em;
+    }
+    .movie-card img{
+        height: 20em;
+    }
+    .movie-card h2{
+        font-size: 1.3rem;
+    }
+    .movie-card p{
+        font-size: 0.9rem;
+    }
+    .movie-card button{
+        font-size: 1rem;
+    }
+    .single-movie-card img{
+        width: 50%;
+    }
+    .single-movie-card h2{
+        font-size: 1.5rem;
+    }
+    .single-movie-card p{
+        font-size: 1rem;
+    }
+    .single-movie-card button{
+        font-size: 1.1rem;
+    }
+}
+@media screen and (max-width: 576px){
+    .main-container{
+        padding: 0 2rem 2rem 2rem;
+    }
+    .movies{
+        grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+    }
+    .movie-card{
+        width: 10em;
+        height: 20em;
+    }
+    .movie-card img{
+        height: 17em;
+    }
+    .movie-card h2{
+        font-size: 1.1rem;
+    }
+    .movie-card p{
+        font-size: 0.8rem;
+    }
+    .movie-card button{
+        font-size: 0.9rem;
+    }
+    .single-movie-card img{
+        width: 60%;
+    }
+    .single-movie-card h2{
+        font-size: 1.3rem;
+    }
+    .single-movie-card p{
+        font-size: 0.9rem;
+    }
+    .single-movie-card button{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 480px){
+    .movies{
+        grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
+    }
+    .movie-card{
+        width: 8em;
+        height: 17em;
+    }
+    .movie-card img{
+        height: 14em;
+    }
+    .movie-card h2{
+        font-size: 1rem;
+    }
+    .movie-card p{
+        font-size: 0.7rem;
+    }
+    .movie-card button{
+        font-size: 0.8rem;
+    }
+    .single-movie-card img{
+        width: 70%;
+    }
+    .single-movie-card h2{
+        font-size: 1.1rem;
+    }
+    .single-movie-card p{
+        font-size: 0.8rem;
+    }
+    .single-movie-card button{
+        font-size: 0.9rem;
+    }
+}
+@media screen and (max-width: 360px){
+    .movies{
+        grid-template-columns: repeat(auto-fill, minmax(6em, 1fr));
+    }
+    .movie-card{
+        width: 6em;
+        height: 15em;
+    }
+    .movie-card img{
+        height: 12em;
+    }
+    .movie-card h2{
+        font-size: 0.9rem;
+    }
+    .movie-card p{
+        font-size: 0.6rem;
+    }
+    .movie-card button{
+        font-size: 0.7rem;
+    }
+    .single-movie-card img{
+        width: 80%;
+    }
+    .single-movie-card h2{
+        font-size: 1rem;
+    }
+    .single-movie-card p{
+        font-size: 0.7rem;
+    }
+    .single-movie-card button{
+        font-size: 0.8rem;
+    }
+}
 /* Footer Styles */
 footer{
     background-color: #0e0e0e;
@@ -240,3 +411,4 @@ footer{
 #tmdbCredit:active{
     transform: scale(0.9);
 }
+
