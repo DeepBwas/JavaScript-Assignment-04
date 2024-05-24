@@ -53,37 +53,6 @@ header{
     transform: scale(0.9);
 }
 /* Main Styles */
-/* Credentials Styles */
-.credentials{
-    background-color: #5a5a5a;
-    color: #fff;
-    padding: 1rem 11rem 1rem 10rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.credentials p{
-    filter: drop-shadow(0 0 10px #ffd700);
-}
-.credentials button{
-    font-size: 1.1rem;
-    font-family: 'SF-Pro', sans-serif;
-    padding: 0.49rem 1rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #fcee0a;
-    color: #023f85;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.credentials button:hover{
-    background-color: #023f85;
-    color: #fff;
-}
-.credentials button:active{
-    transform: scale(0.9);
-}
-/* Credentials TO BE removed after graded, while expanding the project */
 .main-container{
     padding: 0 10rem 2rem 10rem;
     min-height: 80vh;

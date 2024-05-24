@@ -10,24 +10,6 @@ const mainWindow = document.querySelector('.main-window');
 const movieList = document.querySelector('.movies');
 const tmdbCredit = document.getElementById('tmdbCredit');
 
-// Credentials Handler JS 
-const showCredentials = document.getElementById('showCr');
-const dynamicCrdits = document.querySelector('.dynamicCrs');
-
-showCredentials.addEventListener('click', function(){
-    if (showCredentials.textContent === 'Show Credentials') {
-        dynamicCrdits.textContent = 'Deep Biswas - 200554124';
-        dynamicCrdits.style.color = '#f5f5f5';
-        dynamicCrdits.style.fontFamily = 'SF-Pro, sans-serif';
-        dynamicCrdits.style.margin = '-20px';
-        showCredentials.textContent = 'Hide Credentials';  
-    } else {
-        showCredentials.textContent = 'Show Credentials';
-        dynamicCrdits.textContent = '';
-    }
-});
-// Credentials Handler JS TO BE removed after graded and while expanding the project
-
 // API Credentials
 const apiKey = 'e4be2d8d86fbfd83ce907eca1f0262ab';
 const baseUrl = 'https://api.themoviedb.org/3/';
